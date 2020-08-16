@@ -1,0 +1,86 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  color: #313131;
+  background: #f9f9f9;
+}
+
+h1 {
+  margin: 0 0 1rem 0;
+}
+
+#root {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  background: white;
+}
+
+@media (min-width: 600px) {
+  #root {
+    margin: 4rem auto;
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .main {
+    grid-template-columns: 60% 40%;
+  }
+}
+
+/*
+** Search elements
+*/
+
+.search__bar {
+  display: flex;
+}
+
+.search__input {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.search__button {
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.search__result {
+  margin-top: 1rem;
+}
+
+.search__item {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.search__item:hover {
+  border: 1px solid salmon;
+}
+
+.search__img {
+  width: 100px;
+}
+
+.search__text {
+  padding: 1rem;
+}
+
+/*
+** My picture elements
+*/
