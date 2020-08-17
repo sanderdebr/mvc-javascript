@@ -1,17 +1,38 @@
+:root {
+  --alpha: #8fbcbb;
+  --bravo: #3b4252;
+  --charlie: #81a1c1;
+  --delta: #5e81ac;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 html {
-  font-family: sans-serif;
-  color: #313131;
+  color: var(--bravo);
   background: #f9f9f9;
 }
 
 h1 {
   margin: 0 0 1rem 0;
+}
+
+input[type="button"] {
+  border: none;
+  background-color: var(--delta);
+  color: white;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+input[type="button"].disabled {
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #ccc;
 }
 
 #root {
@@ -35,7 +56,7 @@ h1 {
 
 @media (min-width: 600px) {
   .main {
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 60% auto;
   }
 }
 
@@ -52,11 +73,6 @@ h1 {
   padding: 1rem;
 }
 
-.search__button {
-  padding: 1rem;
-  cursor: pointer;
-}
-
 .search__result {
   margin-top: 1rem;
 }
@@ -67,10 +83,11 @@ h1 {
   padding: 1rem;
   margin-top: 1rem;
   cursor: pointer;
+  align-items: center;
 }
 
 .search__item:hover {
-  border: 1px solid salmon;
+  border: 1px solid var(--alpha);
 }
 
 .search__img {
@@ -84,3 +101,30 @@ h1 {
 /*
 ** My picture elements
 */
+
+.my-pictures {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-pictures__item {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.my-pictures__content {
+  display: flex;
+}
+
+.my-pictures__img {
+  width: 50px;
+}
+
+.my-pictures__text {
+  margin-left: 1rem;
+}
