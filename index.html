@@ -3,9 +3,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>MVC JavaScript App</title>
   </head>
   <body>
-    <h1>Hi</h1>
+    <div id="root">
+      <main class="main">
+        <section class="search">
+          <h1 class="search__title">Search in over 1.000.000 pictures!</h1>
+          <div class="search__bar">
+            <input class="search__input" type="text" placeholder="Search..." />
+            <input class="search__button" type="button" value="Search!" />
+          </div>
+          <div class="search__error"></div>
+          <div class="search__result">
+            <!-- <div class="search__item">
+              <img
+                src="https://pbs.twimg.com/profile_images/884870915892367360/k4JCV3b__400x400.jpg"
+                alt=""
+                class="search__img"
+              />
+              <h4 class="search__text">A computer</h4>
+            </div>
+            <div class="search__item">
+              <img
+                src="https://pbs.twimg.com/profile_images/884870915892367360/k4JCV3b__400x400.jpg"
+                alt=""
+                class="search__img"
+              />
+              <h4 class="search__text">A computer</h4>
+            </div>
+            <div class="search__item">
+              <img
+                src="https://pbs.twimg.com/profile_images/884870915892367360/k4JCV3b__400x400.jpg"
+                alt=""
+                class="search__img"
+              />
+              <h4 class="search__text">A computer</h4>
+            </div> -->
+          </div>
+        </section>
+
+        <section class="my-pictures">
+          <h1>My collection</h1>
+          <input class="my-pictures__button" type="button" value="Remove" />
+          <div class="my-pictures__collection">
+            <!-- <div class="my-pictures__item">
+            <div class="my-pictures__content">
+              <img
+                src="https://pbs.twimg.com/profile_images/884870915892367360/k4JCV3b__400x400.jpg"
+                alt=""
+                class="my-pictures__img"
+              />
+              <h4 class="my-pictures__text">A computer</h4>
+            </div>
+            <input id="img1" type="checkbox" name="img1" />
+          </div> -->
+          </div>
+        </section>
+      </main>
+    </div>
   <script type="text/javascript" src="js/bundle.js"></script></body>
 </html>
