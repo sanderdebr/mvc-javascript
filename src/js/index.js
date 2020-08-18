@@ -1,23 +1,14 @@
 import Search from "./models/Search";
-import Selection from "./models/Selection";
+import Picture from "./models/Picture";
+import Collection from "./models/Collection";
 import * as searchView from "./views/searchView";
+import * as collectionView from "./views/collectionView";
 import { elements, renderSpinner, clearSpinner } from "./views/base";
 
 /*
  ** Global state of the app
  */
 const state = {};
-
-/*
- ** Startup on page load
- */
-
-window.addEventListener("load", () => {
-  state.selection = new Selection();
-  state.selection.pictures.forEach((picture) =>
-    selectionView.renderPicture(picture)
-  );
-});
 
 /*
  ** Search controller
@@ -53,13 +44,76 @@ elements.searchButton.addEventListener("click", (event) => {
 });
 
 /*
- ** Picture select controller
+ ** Picture collection controller
  */
 
-const selectionController = () => {};
+const collectionController = () => {
+  collectionView.clearCollection();
+  collectionView.renderPictures(state.collection.pictures);
 
-elements.searchResults.addEventListener("click", (event) => {
-  if (event.target.dataset.id) {
-    selectionController();
+  if (state.collection.getSelectedPictures.length) {
+    collectionView.enableButton();
+  } else {
+    collectionView.disableButton();
   }
+};
+
+// Add picture to collection
+elements.searchResults.addEventListener("click", (event) => {
+  let target;
+  if (!event.target.classList.contains("search__item")) {
+    target = event.target.parentElement;
+  } else {
+    target = event.target;
+  }
+
+  const id = parseInt(target.dataset.id);
+  const alreadySelected = state.collection.pictures.find((x) => x.id === id);
+
+  if (!alreadySelected && id) {
+    const { url } = state.search.pictures.find((x) => x.id === id);
+    state.collection.addPicture(new Picture(id, url));
+
+    collectionController();
+  }
+});
+
+// Select picture for removal
+elements.myPictures.addEventListener("click", (event) => {
+  let target;
+  if (!event.target.classList.contains("search__item")) {
+    target = event.target.parentElement;
+  } else {
+    target = event.target;
+  }
+
+  const id = parseInt(target.dataset.id);
+
+  if (id) {
+    const picture = state.collection.pictures.find((x) => x.id === id);
+    state.collection.toggleSelected(picture.id);
+
+    collectionController();
+  }
+});
+
+// Remove selected pictures
+elements.removeButton.addEventListener("click", () => {
+  if (state.collection.pictures.length) {
+    state.collection.removePictures();
+    collectionController();
+  }
+});
+
+/*
+ ** Startup on page load
+ */
+
+window.addEventListener("load", () => {
+  state.collection = new Collection();
+  state.collection.pictures.forEach((picture) =>
+    collectionView.renderPicture(picture)
+  );
+
+  collectionController();
 });

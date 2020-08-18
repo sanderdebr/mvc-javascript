@@ -3,6 +3,7 @@ import axios from "axios";
 export default class Search {
   constructor(query) {
     this.query = query;
+    this.pictures = [];
   }
 
   async getPictures() {
