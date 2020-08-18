@@ -96,6 +96,10 @@ input[type="button"].disabled {
   border: 1px solid var(--alpha);
 }
 
+.search__item.selected {
+  border: 3px solid var(--alpha);
+}
+
 .search__img {
   width: 100px;
 }
